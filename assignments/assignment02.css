@@ -11,7 +11,7 @@
 
 /* --- pre-existing css --- */
 .stripey tr:nth-child(even) {
-  background-color: gray;
+  background-color:gray;
 }
 .stripey tr:nth-child(odd) {
   background-color: white;
@@ -28,4 +28,54 @@
 }
 input[type="text"].pinkey:focus {
   background-color: pink;
+}
+div {
+  margin-bottom: 50px;
+}
+span {
+  width: 100px;
+  height: 50px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-color: blue;
+  border-width: 5px;
+  background-color: yellow;
+}
+span.a {
+  word-wrap: normal;
+}
+span.b {
+
+}
+span.c {
+  
+}
+img[alt="cat icon"]{
+  position: fixed;
+right: 0px;
+bottom: 0px;
+}
+img[alt="dog icon"]{
+  position: relative;
+  left: -5px;
+  bottom: 150px;
+}
+#positionMe{
+  background-color:orange;
+}
+img[alt="bird icon"]{
+  position:relative;
+  top:50px;
+  left:250px;
+}
+.notused{
+}
+nav {
+  position:sticky;
+  background-color:green;
+  background-opacity:90%;
+  padding:5px;
+  font-size:20px;
 }
