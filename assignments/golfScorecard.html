@@ -155,7 +155,6 @@ for (let i=1; i < 19; i++) {
   parTotal= parTotal+Number.parseInt(elem.children[1].innerHTML);
 }
 document.getElementById("19").children[1].innerHTML = parTotal;
-// you don't have to define the function before you use it! 
 function add1 (elem) {
   var currentScore;
   let totals  = document.getElementById("19");
@@ -210,27 +209,4 @@ function subtract1 (elem) { //Function for subtracting 1
   
 }
 
-function clear (elem) { //Clear score function
-	if(elem.children[2].innerHTML != "-") { 
-		let previouseScore = elem.children[2].innerHTML;
-		let previouseOver = elem.children[3].innerHTML;
-		let totals  = document.getElementById("19");
-		totals.children[2].innerHTML = Number.parseInt((totals.children[2].innerHTML))-Number.parseInt(previouseScore);
-		totals.children[3].innerHTML = Number.parseInt((totals.children[3].innerHTML))-Number.parseInt(previouseOver);
-		if (totals.children[2].innerHTML == "0" && totals.children[3].innerHTML == "0") {
-			totals.children[2].innerHTML = "-";
-			totals.children[3].innerHTML = "-";
-		}
-		elem.children[2].innerHTML = "-";
-		elem.children[3].innerHTML = "-";
-	}
-}
 
-function parToTotal(elem) { //Function for total score
-	let totals  = document.getElementById("19");
-	if(totals.children[3].innerHTML == "-") {
-		totals.children[3].innerHTML = 0;
-	}
-	totals.children[3].innerHTML = Number.parseInt(totals.children[3].innerHTML) + Number.parseInt(elem.children[3].innerHTML);
-}
-</script>
