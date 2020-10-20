@@ -145,68 +145,95 @@
   </tr>
 </table>
 <script>
-  var parTotal = 0;
+var finalPar = 0;
 for (let i=1; i < 19; i++) {
   let elem  = document.getElementById(i.toString());
-  // assign the entire table row for hole 1 to a variable, elem
-  elem.children[4].children[0].onclick  = function(){add1(elem);}; //Adding to score
-  elem.children[4].children[1].onclick  = function(){subtract1(elem);}; //Subtracting from score
-  elem.children[4].children[2].onclick = function(){clear(elem);}; //Clear score
-  parTotal= parTotal+Number.parseInt(elem.children[1].innerHTML);
+  elem.children[4].children[0].onclick  = function(){add1(elem);};
+  elem.children[4].children[1].onclick  = function(){minus1(elem);};
+  elem.children[4].children[2].onclick = function(){clear(elem);};
+  finalPar= finalPar+Number.parseInt(elem.children[1].innerHTML);
 }
-document.getElementById("19").children[1].innerHTML = parTotal;
+document.getElementById("19").children[1].innerHTML = finalPar;
+
 function add1 (elem) {
-  var currentScore;
-  let totals  = document.getElementById("19");
+  var currScore;
+  let total  = document.getElementById("19");
   if(elem.children[2].innerHTML == "-") {
     elem.children[2].innerHTML = "1";
-	currentScore = 1;
+	currScore = 1;
     let par = elem.children[1].innerHTML;
     elem.children[3].innerHTML = 1-Number.parseInt(par);
-	if(totals.children[2].innerHTML == "-") {
-		totals.children[2].innerHTML = 1;
+	if(total.children[2].innerHTML == "-") {
+		total.children[2].innerHTML = 1;
 	} else {
-		totals.children[2].innerHTML = Number.parseInt(totals.children[2].innerHTML) + 1;
+		total.children[2].innerHTML = Number.parseInt(total.children[2].innerHTML) + 1;
 	}
-	parToTotal(elem);
+	parTotal(elem);
   }
   else {
-    let currentScore = elem.children[2].innerHTML;
-    currentScore = Number.parseInt(currentScore);
-    elem.children[2].innerHTML = currentScore + 1;
-    let par = elem.children[1].innerHTML; 
-    elem.children[3].innerHTML = (currentScore+1)-Number.parseInt(par);
-	totals.children[2].innerHTML = Number.parseInt(totals.children[2].innerHTML)+1;
-	totals.children[3].innerHTML = Number.parseInt(totals.children[3].innerHTML)+1;
+    let currScore = elem.children[2].innerHTML;
+    currScore = Number.parseInt(currScore);
+    elem.children[2].innerHTML = currScore + 1;
+    let par = elem.children[1].innerHTML;
+    elem.children[3].innerHTML = (currScore+1)-Number.parseInt(par);
+	total.children[2].innerHTML = Number.parseInt(total.children[2].innerHTML)+1;
+	total.children[3].innerHTML = Number.parseInt(total.children[3].innerHTML)+1;
   }
   
 }
 
-function subtract1 (elem) { //Function for subtracting 1
-  var currentScore;
-  let totals  = document.getElementById("19");
+function minus1 (elem) {
+  var currScore;
+  let total  = document.getElementById("19");
   if(elem.children[2].innerHTML == "-") {
     elem.children[2].innerHTML = "-1";
-    currentScore = 0;
+    currScore = 0;
     let par = elem.children[1].innerHTML;
-    elem.children[3].innerHTML = (currentScore-1)-Number.parseInt(par);
-	if(totals.children[2].innerHTML == "-") {
-		totals.children[2].innerHTML = -1;
+    elem.children[3].innerHTML = (currScore-1)-Number.parseInt(par);
+	if(total.children[2].innerHTML == "-") {
+		total.children[2].innerHTML = -1;
 	} else {
-		totals.children[2].innerHTML = Number.parseInt(totals.children[2].innerHTML) - 1;
+		total.children[2].innerHTML = Number.parseInt(total.children[2].innerHTML) - 1;
 	}
-	parToTotal(elem);
+	parTotal(elem);
   }
   else {
-    let currentScore = elem.children[2].innerHTML;
-    currentScore = Number.parseInt(currentScore);
-    elem.children[2].innerHTML = currentScore - 1;
+    let currScore = elem.children[2].innerHTML;
+    currScore = Number.parseInt(currScore);
+    elem.children[2].innerHTML = currScore - 1;
     let par = elem.children[1].innerHTML;
-    elem.children[3].innerHTML = (currentScore-1)-Number.parseInt(par);
-	totals.children[2].innerHTML = Number.parseInt(totals.children[2].innerHTML)-1;
-	totals.children[3].innerHTML = Number.parseInt(totals.children[3].innerHTML)-1;
+    elem.children[3].innerHTML = (currScore-1)-Number.parseInt(par);
+	total.children[2].innerHTML = Number.parseInt(total.children[2].innerHTML)-1;
+	total.children[3].innerHTML = Number.parseInt(total.children[3].innerHTML)-1;
   }
   
 }
+
+function clear (elem) {
+	if(elem.children[2].innerHTML != "-") { 
+		let oldScore = elem.children[2].innerHTML;
+		let oldOver = elem.children[3].innerHTML;
+		let total  = document.getElementById("19");
+		total.children[2].innerHTML = Number.parseInt((total.children[2].innerHTML))-Number.parseInt(oldScore);
+		total.children[3].innerHTML = Number.parseInt((total.children[3].innerHTML))-Number.parseInt(oldOver);
+		if (total.children[2].innerHTML == "0" && total.children[3].innerHTML == "0") {
+			total.children[2].innerHTML = "-";
+			total.children[3].innerHTML = "-";
+		}
+		elem.children[2].innerHTML = "-";
+		elem.children[3].innerHTML = "-";
+	}
+}
+
+function parTotal(elem) {
+	let total  = document.getElementById("19");
+	if(total.children[3].innerHTML == "-") {
+		total.children[3].innerHTML = 0;
+	}
+	total.children[3].innerHTML = Number.parseInt(total.children[3].innerHTML) + Number.parseInt(elem.children[3].innerHTML);
+}
+
+</script>
+
 
 
