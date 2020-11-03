@@ -124,6 +124,7 @@ function resetAllClubDistances() {
 	// store the array in local storage
 	let str = JSON.stringify(clubs);
 	localStorage.setItem("clubs", str);
+	localStorage.setItem("undoClubs, str);
 	// and refresh screen
 	window.location.href = "clubDistanceList.html"; 
 }
